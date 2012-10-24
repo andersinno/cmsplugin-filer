@@ -6,6 +6,7 @@ from cms.models.fields import PageField
 from filer.fields.image import FilerImageField
 from django.conf import settings
 from distutils.version import LooseVersion
+from tinymce.models import HTMLField
 
 from cmsplugin_filer_utils import FilerPluginManager
 
@@ -31,7 +32,7 @@ class FilerTeaser(CMSPlugin):
     
     free_link = models.CharField(_("link"), max_length=255, blank=True, null=True, help_text=_("if present image will be clickable"))
     page_link = PageField(null=True, blank=True, help_text=_("if present image will be clickable"), verbose_name=_("page link"))
-    description = models.TextField(_("description"), blank=True, null=True)
+    description = HTMLField(_("description"), blank=True, null=True)
     
     target_blank = models.BooleanField(_("open link in new window"), default=False)
 
